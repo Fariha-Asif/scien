@@ -9,7 +9,7 @@ import plotly.io as pio
 pio.renderers.default = "iframe_connected"
 
 # Title of the App
-st.title("📟 Scientific Calculator with Plotting")
+st.title("📟 Scientific Calculator with Graphing")
 
 # Initialize Session State for expression and history
 if 'expression' not in st.session_state:
@@ -37,6 +37,51 @@ allowed_names = {
     'round': np.round,
     'x': None  # Placeholder for plotting
 }
+
+# Define button layout for scientific calculator
+col1, col2, col3, col4, col5 = st.columns(5)
+
+with col1:
+    st.button('7')
+    st.button('4')
+    st.button('1')
+    st.button('0')
+    st.button('pi')
+    st.button('exp')
+
+with col2:
+    st.button('8')
+    st.button('5')
+    st.button('2')
+    st.button('.')
+    st.button('x')
+    st.button('abs')
+
+with col3:
+    st.button('9')
+    st.button('6')
+    st.button('3')
+    st.button('(')
+    st.button('^')
+    st.button(')')
+
+with col4:
+    st.button('/')
+    st.button('*')  # Fixed the multiplication symbol
+    st.button('-')  # Fixed the minus symbol
+    st.button('log')
+    st.button('=')  # Equals button
+
+with col5:
+    st.button('sin')
+    st.button('cos')
+    st.button('tan')
+    st.button('sqrt')
+    st.button('plot')
+    st.button('clear')
+
+# Input field for expression
+expression = st.text_input("Enter the expression:")
 
 def sanitize_expression(expression):
     """
