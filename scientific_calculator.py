@@ -1,5 +1,3 @@
-# app.py
-
 import streamlit as st
 import numpy as np
 import plotly.graph_objs as go
@@ -155,48 +153,14 @@ def plot_expression():
 st.text_input("Expression:", st.session_state.expression, key='expr_input', disabled=True)
 
 # Calculator Buttons Layout
-# Define button layout for scientific calculator
-col1, col2, col3, col4, col5 = st.columns(5)
-
-with col1:
-    st.button('7')
-    st.button('4')
-    st.button('1')
-    st.button('0')
-    st.button('pi')
-    st.button('exp')
-
-with col2:
-    st.button('8')
-    st.button('5')
-    st.button('2')
-    st.button('.')
-    st.button('x')
-    st.button('abs')
-
-with col3:
-    st.button('9')
-    st.button('6')
-    st.button('3')
-    st.button('(')
-    st.button('^')
-    st.button(')')
-
-with col4:
-    st.button('/')
-    st.button('*')  # Fixed the multiplication symbol
-    st.button('-')  # Fixed the minus symbol
-    st.button('log')
-    st.button('=')  # Equals button
-
-with col5:
-    st.button('sin')
-    st.button('cos')
-    st.button('tan')
-    st.button('sqrt')
-    st.button('plot')
-    st.button('clear')
-
+button_labels = [
+    ['7', '8', '9', '/', 'sin'],
+    ['4', '5', '6', '*', 'cos'],
+    ['1', '2', '3', '-', 'tan'],
+    ['0', '.', '(', ')', 'sqrt'],
+    ['pi', 'x', '^', 'log', 'exp'],
+    ['abs', '=', 'plot', 'clear']
+]
 
 # Create buttons in a grid layout
 for row in button_labels:
@@ -219,7 +183,6 @@ for row in button_labels:
                 add_to_expression('**')
             else:
                 add_to_expression(label)
-
 
 # Display History
 if st.session_state.history:
